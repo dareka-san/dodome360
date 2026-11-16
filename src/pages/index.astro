@@ -1,0 +1,23 @@
+---
+import ProjectLayout from '../layouts/ProjectLayout.astro';
+
+const title = 'CURSOR FOLLOWING FACE';
+const tags = ['Canvas 2D', 'WebP', 'JavaScript'];
+const drawingDescription = 'カーソルや指の動きに合わせて顔の向きが変わるどどめちゃん';
+const framesPath = `${import.meta.env.BASE_URL.replace(/\/$/, '')}/frames/`;
+---
+
+<ProjectLayout title={title} tags={tags}>
+  <canvas id="drawing" data-frames-path={framesPath} role="img" aria-label={drawingDescription}>
+    {drawingDescription}
+  </canvas>
+  <p id="status" class="status" role="status" aria-atomic="true"></p>
+  <noscript><p class="status">表示するにはJavaScriptを有効にしてください。</p></noscript>
+  <script src="../scripts/engine.js"></script>
+</ProjectLayout>
+
+<style>
+  #drawing {
+    background: #e0dfd7;
+  }
+</style>
